@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/TweenMax.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<style type="text/css">
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top: 20%;
+			left: 10px;
+		}
+		.revers{
+			width: 30px;
+			height: 20px;
+			background: red;
+		}
+	</style>
+	<body>
+		<div class="revers"></div>
+		<div class="stop">ting</div>
+		<input type="button" name="start" id="start" value="zou" class="start" />
+		<div class="box"></div>
+
+	</body>
+	<script type="text/javascript">
+
+		$(function(){
+			var t = new TimelineMax();
+			
+			t.to(".box",1,{left:300,onComplete(){
+				alert("left:300");
+			},onReverseComplete(){
+                alert("left:0");
+            }},1);
+			t.to(".box",1,{width:300},"-=1");
+			t.to(".box",1,{height:300,onComplate(){
+				alert("width:300");
+			},onReverseComplete(){
+				alert("2");
+			}
+			});
+
+			t.to(".box",1,{rotationZ:180});
+			t.to(".box",1,{opacity:0});
+		
+		
+		
+		$(".start").click(function(){
+			t.play()
+		})
+		$(".stop").click(function(){
+			t.stop()
+		})
+		$(".revers").click(function(){
+
+			t.reverse()
+		})
+		function a(){
+			alert(1)
+		}
+		})
+	</script>
+</html>
